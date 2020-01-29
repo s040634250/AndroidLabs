@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Lab 1</string>
+    <string name="hello_message">Bonjour!</string>
+    <string name="title">Regardez mon interface graphique</string>
+    <string name="button">CLIQUEZ ICI</string>
+    <string name="check">Regarde ça!</string>
+    <string name="switch1">Allumer / éteindre</string>
+    <string name="textHint">Écrivez ici</string>
+    <string name="toast_message">voici plus d\'informations</string>
+</resources>
