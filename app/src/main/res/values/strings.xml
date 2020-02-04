@@ -6,5 +6,22 @@
     <string name="check">Check this out!</string>
     <string name="switch1">Switch on / off</string>
     <string name="textHint">Type here</string>
+
     <string name="toast_message">Here is more information</string>
+    <string name="preference_file_key" />
+
+    <string name="email">Enter your email:</string>
+    <string name="emailEdit"></string>
+    <string name="password">Enter your password:</string>
+    <string name="passwordEdit"></string>
+    <string name="login">Login</string>
+
+    <string name="profileName">Your name:</string>
+    <string name="profileNameHint">Enter your name</string>
+    <string name="profile">Your profile</string>
+    <string name="profileEmail">Your email:</string>
+    <string name="profileEmailHint">Enter your email</string>
+    <string name="profilePicture">Your profile picture:</string>
+    <string name="profilePictureCaption">Click the button above to take a picture</string>
+
 </resources>

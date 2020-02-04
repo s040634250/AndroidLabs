@@ -8,4 +8,19 @@
     <string name="switch1">Allumer / éteindre</string>
     <string name="textHint">Écrivez ici</string>
     <string name="toast_message">voici plus d\'informations</string>
+    <string name="preference_file_key" />
+
+    <string name="email">Entrez votre adresse email:</string>
+    <string name="emailEdit"></string>
+    <string name="password">Tapez votre mot de passe:</string>
+    <string name="passwordEdit"></string>
+    <string name="login">entrer</string>
+
+    <string name="profileName">Votre nom:</string>
+    <string name="profileNameHint">Entrez votre nom</string>
+    <string name="profile">Votre profil</string>
+    <string name="profileEmail">Votre email:</string>
+    <string name="profileEmailHint">Entrer votre Email</string>
+    <string name="profilePicture">Ta photo de profil:</string>
+    <string name="profilePictureCaption">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
 </resources>

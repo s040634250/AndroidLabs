@@ -1,55 +1,48 @@
 package com.example.androidlabs;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.res.Resources;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
-import android.widget.Switch;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.google.android.material.snackbar.Snackbar;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class MainActivity extends AppCompatActivity {
-    public void toastMsg(String msg) {
 
-        Toast toast = Toast.makeText(this, msg, Toast.LENGTH_LONG);
-        toast.show();
-    }
+    EditText prevEmail;
+    SharedPreferences prefs;
+    Button login;
+    String previous;
+    //Context c = this.getConext();
 
-    public void displayToastMsg(View v) {
-        toastMsg(v.getResources().getString(R.string.toast_message));
-    }
-
-    public void switchSnackbar(View v){
-        Switch switch1 = findViewById( R.id.switch1 );
-        switch1.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            String position;
-            if ( !isChecked )
-            {
-                position = "off";
-            }else position = "on";
-            Snackbar.make(buttonView, "The switch is now " + position, Snackbar.LENGTH_SHORT).setAction( "Undo", click -> buttonView.setChecked(!isChecked)).show();
-        });
-        }
-
-
-    public void checkBoxSnackbar(View v){
-    CheckBox checkBox = findViewById( R.id.checkBox );
-    checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
-        String position;
-        if ( !isChecked )
-        {
-            position = "off";
-    }else position = "on";
-        Snackbar.make(buttonView, "The switch is now " + position, Snackbar.LENGTH_SHORT).setAction( "Undo", click -> buttonView.setChecked(!isChecked)).show();
-});
-    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_linear);
+        setContentView(R.layout.activity_main);
+        prevEmail = findViewById(R.id.editText2);
+        prefs = getSharedPreferences("name", MODE_PRIVATE);
+
+        login  = findViewById(R.id.button2);
+        login.setOnClickListener(v -> {
+            Intent goToProfile = new Intent(MainActivity.this, ProfileActivity.class);
+
+            goToProfile.putExtra("EMAIL", prevEmail.getText().toString());
+
+            startActivityForResult(goToProfile, 345);
+        });
+    }
+
+    protected void onPause() {
+        super.onPause();
+
+        //SharedPreferences prefs = getSharedPreferences("FileName", MODE_PRIVATE);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        previous = prevEmail.getText().toString();
+        editor.putString("",previous);
+        editor.apply();
     }
 }

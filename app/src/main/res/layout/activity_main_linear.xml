@@ -24,9 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="fill"
+            android:onClick="displayToastMsg"
             android:text="@string/button"
-            android:textAlignment="center"
-            android:onClick="displayToastMsg" />
+            android:textAlignment="center" />
 
         <CheckBox
             android:id="@+id/checkBox"
@@ -59,8 +59,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="fill"
-            android:text="@string/switch1"
-            android:onClick="switchSnackbar" />
+            android:onClick="switchSnackbar"
+            android:text="@string/switch1" />
     </LinearLayout>
 
     <EditText
@@ -68,8 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="88dp"
         android:ems="10"
+        android:hint="@string/textHint"
         android:inputType="textPersonName"
-        android:text=""
-        android:hint="@string/textHint"/>
+        android:text="" />
 
 </LinearLayout>

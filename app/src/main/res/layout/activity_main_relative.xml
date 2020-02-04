@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_alignParentStart="true"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/title"
-            android:textSize="30sp" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:text="@string/title"
+        android:textSize="30sp" />
 
     <Button
         android:id="@+id/button"
@@ -23,10 +24,10 @@
 
     <CheckBox
         android:id="@+id/checkBox"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/textView2"
+        android:layout_alignParentEnd="true"
         android:layout_toEndOf="@id/button"
         android:onClick="checkBoxSnackbar"
         android:orientation="horizontal"
@@ -34,28 +35,28 @@
 
     <ImageButton
         android:id="@+id/imageButton"
-        android:layout_below="@id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/button"
         android:background="@drawable/flag" />
 
     <Switch
         android:id="@+id/switch1"
-        android:layout_alignParentEnd="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/button"
+        android:layout_alignParentEnd="true"
         android:layout_toEndOf="@id/button"
         android:onClick="switchSnackbar"
         android:text="@string/switch1" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_below="@id/imageButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/imageButton"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
         android:ems="10"
         android:hint="@string/textHint"
         android:inputType="textPersonName"
