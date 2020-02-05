@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Lab 1</string>
+    <string name="app_name">Lab 4</string>
     <string name="hello_message">Bonjour!</string>
     <string name="title">Regardez mon interface graphique</string>
     <string name="button">CLIQUEZ ICI</string>
@@ -23,4 +23,14 @@
     <string name="profileEmailHint">Entrer votre Email</string>
     <string name="profilePicture">Ta photo de profil:</string>
     <string name="profilePictureCaption">Cliquez sur le bouton ci-dessus pour prendre une photo</string>
+
+    <string name="enterChat">Aller au chat</string>
+    <string name="AlertDialogTitle">Voulez-vous le supprimer?</string>
+    <string name="AlertDialog1">La ligne sélectionnée est: </string>
+    <string name="AlertDialog2">L\'ID de la base de données est:</string>
+    <string name="cancel">Annuler</string>
+    <string name="delete">Supprimer</string>
+    <string name="chatMessage">Écrivez ici</string>
+    <string name="sendButton">Envoyer</string>
+    <string name="receiveButton">Recevoir</string>
 </resources>
