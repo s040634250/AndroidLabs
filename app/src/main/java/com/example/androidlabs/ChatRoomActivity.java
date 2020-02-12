@@ -161,8 +161,7 @@ public class ChatRoomActivity extends AppCompatActivity {
         Log.i("columnNames", "Column Names: " + columnNames);
         Log.i("rowCount", "Row Count: " + rowCount);
 
-        c.moveToFirst();
-        while (c.moveToNext()) {
+        while (c.moveToPrevious()) {
             boolean isSent = false;
 
             long id = c.getLong(idColumn);

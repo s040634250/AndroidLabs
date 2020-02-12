@@ -8,7 +8,7 @@ import android.util.Log;
 
 public class DbOpenHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "MessageDB";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
 
     public static final String TABLE_NAME = "Messages";
     public static final String ID_COLUMN = "_id";
