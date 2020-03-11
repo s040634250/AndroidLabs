@@ -33,6 +33,7 @@
     <string name="chatMessage">Type here</string>
     <string name="sendButton">Send</string>
     <string name="receiveButton">Receive</string>
+
     <string name="Weather">Weather</string>
     <string name="currentTemp">Current Temperature:</string>
     <string name="minTemp">Minimum Temperature:</string>

@@ -17,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText email;
     ImageButton mImageButton;
     Button chatButton;
+    Button weatherButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +39,11 @@ public class ProfileActivity extends AppCompatActivity {
         email = findViewById(R.id.editText5);
         email.setText(fromMain.getStringExtra("EMAIL"));
 
+        weatherButton = findViewById(R.id.button5);
+        weatherButton.setOnClickListener(v -> {
+            Intent goToWeather = new Intent(ProfileActivity.this, WeatherForcast.class);
+            startActivityForResult(goToWeather, 345);
+        });
         chatButton = findViewById(R.id.button3);
         chatButton.setOnClickListener(v -> {
             Intent goToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
