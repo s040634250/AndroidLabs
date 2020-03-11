@@ -17,6 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
     EditText email;
     ImageButton mImageButton;
     Button chatButton;
+    Button weather;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,10 +43,12 @@ public class ProfileActivity extends AppCompatActivity {
         chatButton.setOnClickListener(v -> {
             Intent goToChat = new Intent(ProfileActivity.this, ChatRoomActivity.class);
             startActivityForResult(goToChat, 345);
-
-
         });
-
+        weather = findViewById(R.id.button4);
+        weather.setOnClickListener(v -> {
+            Intent goToWeather = new Intent(ProfileActivity.this, WeatherForcast.class);
+            startActivityForResult(goToWeather, 345);
+        });
         Log.e(ACTIVITY_NAME, "in function: onCreate()");
     }
 

@@ -33,4 +33,9 @@
     <string name="chatMessage">Écrivez ici</string>
     <string name="sendButton">Envoyer</string>
     <string name="receiveButton">Recevoir</string>
+    <string name="Weather">Temps</string>
+    <string name="currentTemp">Température actuelle:</string>
+    <string name="maxTemp">Température maximale:</string>
+    <string name="minTemp">Température minimale:</string>
+    <string name="uvIndex">L\'indice UV:</string>
 </resources>
