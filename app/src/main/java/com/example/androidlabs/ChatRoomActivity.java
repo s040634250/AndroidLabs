@@ -134,7 +134,7 @@ public class ChatRoomActivity extends AppCompatActivity {
                 TextView receiveText = thisRow.findViewById(R.id.receivedField);
                 receiveText.setText(getItem(p).getMessageText());
             }
-            chat.setOnItemLongClickListener();
+
             chat.setOnItemClickListener((parent1, view, position, id) -> {
 
                 Bundle muhData = new Bundle();
@@ -153,6 +153,22 @@ public class ChatRoomActivity extends AppCompatActivity {
                     Intent goToDetails = new Intent(ChatRoomActivity.this, EmptyActivity.class);
                     startActivityForResult(goToDetails, 345);
                 }
+            });
+            chat.setOnItemLongClickListener((parent1, view, position, id) -> {
+                String alert1 = getResources().getString(R.string.AlertDialog1);
+                String alert2 = getResources().getString(R.string.AlertDialog2);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoomActivity.this);
+                builder.setMessage(alert1 + position + "\n" + alert2 + getItemId(position));
+                builder.setTitle(R.string.AlertDialogTitle);
+                builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss());
+                builder.setPositiveButton(R.string.delete, (dialog, which) -> {
+                    db.delete(DbOpenHelper.TABLE_NAME, DbOpenHelper.ID_COLUMN + "=" + getItemId(position), null);
+                    messageList.remove(getItem(position));
+
+                    a.notifyDataSetChanged();
+                });
+
             });
 
             return thisRow;
