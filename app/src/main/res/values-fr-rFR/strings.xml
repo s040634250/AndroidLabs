@@ -33,4 +33,5 @@
     <string name="chatMessage">Écrivez ici</string>
     <string name="sendButton">Envoyer</string>
     <string name="receiveButton">Recevoir</string>
+    <string name="hide">Cacher</string>
 </resources>

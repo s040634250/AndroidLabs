@@ -2,8 +2,10 @@ package com.example.androidlabs;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -12,10 +14,15 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.Fragment;
+
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.ArrayList;
 
@@ -28,7 +35,13 @@ public class ChatRoomActivity extends AppCompatActivity {
     BaseAdapter a;
     Message message;
     SQLiteDatabase db;
+    FrameLayout fragment;
+    private boolean tablet;
 
+    public static final String MESSAGE = "MESSAGE";
+    public static final String ID = "ID";
+    public static final String SENT = "SENT";
+    public static final String TABLET = "TABLET";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +52,10 @@ public class ChatRoomActivity extends AppCompatActivity {
         receive = findViewById(R.id.ReceiveButton);
         send = findViewById(R.id.SendButton);
         messager = findViewById(R.id.ChatMessage);
-
+        fragment = findViewById(R.id.frameLayout);
+        if (fragment == null) {
+            tablet = false;
+        } else tablet = true;
         chat.setAdapter(a = new myListAdapter());
 
         DbOpenHelper dbOpener = new DbOpenHelper(this);
@@ -118,27 +134,25 @@ public class ChatRoomActivity extends AppCompatActivity {
                 TextView receiveText = thisRow.findViewById(R.id.receivedField);
                 receiveText.setText(getItem(p).getMessageText());
             }
+            chat.setOnItemLongClickListener();
+            chat.setOnItemClickListener((parent1, view, position, id) -> {
 
-            chat.setOnItemLongClickListener((parent1, view, position, id) -> {
-                String alert1 = getResources().getString(R.string.AlertDialog1);
-                String alert2 = getResources().getString(R.string.AlertDialog2);
+                Bundle muhData = new Bundle();
+                muhData.putString(MESSAGE, getItem(p).getMessageText());
+                muhData.putLong(ID, getItemId(p));
+                muhData.putBoolean(SENT, getItem(p).isSent());
+                muhData.putBoolean(TABLET, tablet);
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(ChatRoomActivity.this);
-                builder.setMessage(alert1 + position + "\n" + alert2 + getItemId(position));
-                builder.setTitle(R.string.AlertDialogTitle);
-                builder.setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss());
-                builder.setPositiveButton(R.string.delete, (dialog, which) -> {
-                    db.delete(DbOpenHelper.TABLE_NAME, DbOpenHelper.ID_COLUMN + "=" + getItemId(position), null);
-                    messageList.remove(getItem(position));
+                if (tablet) {
+                    DetailsFragment frag = new DetailsFragment();
+                    frag.setArguments(muhData);
+                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, frag);
+                    ft.commit();
 
-                    a.notifyDataSetChanged();
-                });
-
-
-                builder.create();
-                builder.show();
-
-                return true;
+                } else {
+                    Intent goToDetails = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    startActivityForResult(goToDetails, 345);
+                }
             });
 
             return thisRow;
