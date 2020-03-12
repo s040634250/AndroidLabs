@@ -37,6 +37,7 @@ public class ChatRoomActivity extends AppCompatActivity {
     SQLiteDatabase db;
     FrameLayout fragment;
     private boolean tablet;
+    DetailsFragment frag;
 
     public static final String MESSAGE = "MESSAGE";
     public static final String ID = "ID";
@@ -136,21 +137,22 @@ public class ChatRoomActivity extends AppCompatActivity {
             }
 
             chat.setOnItemClickListener((parent1, view, position, id) -> {
-
                 Bundle muhData = new Bundle();
-                muhData.putString(MESSAGE, getItem(p).getMessageText());
-                muhData.putLong(ID, getItemId(p));
-                muhData.putBoolean(SENT, getItem(p).isSent());
+                muhData.putString(MESSAGE, getItem(position).getMessageText());
+                muhData.putLong(ID, getItemId(position));
+                muhData.putBoolean(SENT, getItem(position).isSent());
                 muhData.putBoolean(TABLET, tablet);
 
+
                 if (tablet) {
-                    DetailsFragment frag = new DetailsFragment();
+                    frag = new DetailsFragment();
                     frag.setArguments(muhData);
                     FragmentTransaction ft = getSupportFragmentManager().beginTransaction().replace(R.id.frameLayout, frag);
                     ft.commit();
 
                 } else {
                     Intent goToDetails = new Intent(ChatRoomActivity.this, EmptyActivity.class);
+                    goToDetails.putExtras(muhData);
                     startActivityForResult(goToDetails, 345);
                 }
             });
@@ -165,10 +167,17 @@ public class ChatRoomActivity extends AppCompatActivity {
                 builder.setPositiveButton(R.string.delete, (dialog, which) -> {
                     db.delete(DbOpenHelper.TABLE_NAME, DbOpenHelper.ID_COLUMN + "=" + getItemId(position), null);
                     messageList.remove(getItem(position));
-
+                    if (tablet && frag.isVisible()) {
+                        FragmentTransaction ft = getSupportFragmentManager().beginTransaction().remove(frag);
+                        ft.commit();
+                    }
                     a.notifyDataSetChanged();
-                });
 
+                });
+                builder.create();
+                builder.show();
+
+                return true;
             });
 
             return thisRow;

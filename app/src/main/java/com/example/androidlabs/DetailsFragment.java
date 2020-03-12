@@ -1,6 +1,8 @@
 package com.example.androidlabs;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -38,6 +40,7 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         muhData = getArguments();
+
         String messageString = muhData.getString("MESSAGE");
         long messageId = muhData.getLong("ID");
         boolean isSent = muhData.getBoolean("SENT");
@@ -57,7 +60,10 @@ public class DetailsFragment extends Fragment {
 
             if (tablet) {
                 ChatRoomActivity parent = (ChatRoomActivity) getActivity();
-
+                parent.getSupportFragmentManager().beginTransaction().remove(this).commit();
+            } else {
+                EmptyActivity parent = (EmptyActivity) getActivity();
+                parent.finish(); //go back
             }
         });
         return thisMessage;
